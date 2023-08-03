@@ -10,7 +10,7 @@ WHERE duration = (
   
 SELECT track_name
 FROM tracks
-WHERE duration > 210;
+WHERE duration >= 210;
 
 SELECT name
 FROM mixtapes
@@ -22,7 +22,7 @@ WHERE artist_name NOT LIKE '% %';
 
 SELECT track_name
 FROM tracks
-WHERE track_name SIMILAR TO '%(my|мой)%';
+WHERE track_name ~* '(^(my|мой)\W|\W(мой|my)$|\s(мой|my)\s|\b(мой|my)\b)'
 
 -- Количество исполнителей в каждом жанре.
 SELECT genre_name, count(g2.genre_id) 
